@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shirts By The Slice – Custom Merch</title>
+  <meta name="description" content="Shirts By The Slice – Merchandise with your custom toppings. Fast, fun, and affordable custom shirts, hoodies, mugs, and more." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;800&family=Staatliches&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Brand palette */
+      --red:#C1272D; /* sauce */
+      --red-dark:#a42025;
+      --black:#111;
+      --ink:#0e0e0e;
+      --white:#fff;
+      --crust:#F4E1C1; /* warm accent like pizza dough */
+      --light:#f7f7f8;
+      --shadow:0 10px 20px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.07);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--light);color:var(--ink);font-family:Barlow,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    img{max-width:100%;display:block}
+    a{color:var(--red);text-decoration:none}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:var(--white);box-shadow:var(--shadow)}
+    .wrap{max-width:1100px;margin:auto;padding:0 20px}
+    .nav{display:flex;align-items:center;gap:20px;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:42px;height:42px;border:3px solid var(--black);border-bottom-width:10px;border-radius:8px 8px 18px 18px;position:relative;}
+    /* quick pizza-dot vibe */
+    .brand .logo::before{content:"";position:absolute;inset:8px 8px 6px; background:radial-gradient(circle at 30% 40%, var(--red) 0 6px, transparent 7px),
+      radial-gradient(circle at 60% 65%, var(--red) 0 4px, transparent 5px),
+      radial-gradient(circle at 70% 35%, var(--red) 0 8px, transparent 9px),
+      radial-gradient(circle at 40% 75%, var(--red) 0 3px, transparent 4px);border-top:4px solid var(--red)}
+    .brand h1{font-family:Staatliches,system-ui;letter-spacing:.5px;font-size:26px;margin:0;line-height:1}
+    .tagmini{display:block;font-size:11px;color:#555;margin-top:-2px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{font-weight:600;color:var(--ink)}
+    nav a.button{background:var(--red);color:#fff;padding:10px 14px;border-radius:12px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:56px 0}
+    .hero h2{font-family:Staatliches;letter-spacing:1px;font-size:56px;line-height:.95;margin:0 0 12px}
+    .hero p{font-size:18px;margin:0 0 22px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:14px;font-weight:800;cursor:pointer;border:2px solid transparent}
+    .btn.primary{background:var(--red);color:#fff}
+    .btn.primary:hover{background:var(--red-dark)}
+    .btn.ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+    .hero-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;position:relative;overflow:hidden}
+    .hero-card::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,var(--red) 0 60px,transparent 61px),radial-gradient(circle at 70% 30%,var(--red) 0 38px,transparent 39px);opacity:.15}
+
+    /* Stripes */
+    .stripe{background:var(--white);padding:56px 0;margin:36px 0;box-shadow:var(--shadow)}
+
+    /* Menu/Services */
+    .grid{display:grid;gap:22px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .card h3{margin:0 0 6px;font-size:22px}
+    .pill{display:inline-block;background:var(--crust);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;color:#6a4b28}
+
+    /* Pricing Teaser */
+    .price{font-family:Staatliches;font-size:72px;line-height:.9;color:var(--red);margin:0}
+    .muted{color:#666}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+    .shot{border-radius:12px;overflow:hidden;aspect-ratio:1/1;background:linear-gradient(120deg,#fff, #f0f0f0)}
+    .shot:nth-child(odd){background:linear-gradient(120deg,#fff,#f6f6f6)}
+    .shot img{width:100%;height:100%;object-fit:cover}
+
+    /* Order Form */
+    form{display:grid;gap:14px}
+    label{font-weight:700;font-size:14px}
+    input,select,textarea{width:100%;padding:12px 14px;border:1.5px solid #ddd;border-radius:12px;font:inherit;background:#fff}
+    textarea{min-height:120px}
+    .form-row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+
+    /* Footer */
+    footer{background:#111;color:#ddd;padding:36px 0;margin-top:56px}
+    footer a{color:#fff;text-decoration:underline}
+
+    /* Responsiveness */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr 1fr}
+      .form-row{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      nav ul{display:none}
+      .grid.cols-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Shirts <span style="color:var(--red)">By The Slice</span></h1>
+          <small class="tagmini">Merchandise with your custom toppings</small>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#services">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#order">Start Order</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a class="button" href="#order">Get a Quote</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home">
+      <div>
+        <h2>Fresh Prints, <span style="color:var(--red)">Custom</span> Toppings.</h2>
+        <p>Local, veteran-owned merch shop serving hot designs on tees, hoodies, hats, mugs and more. Upload your art or let us cook something from scratch.</p>
+        <div class="cta">
+          <a class="btn primary" href="#order">Start Your Order</a>
+          <a class="btn ghost" href="#services">See the Menu</a>
+        </div>
+        <p class="muted" style="margin-top:10px">Call <strong>(312) 600-7730</strong> or email <a href="mailto:orders@shirtsbytheslice.com">orders@shirtsbytheslice.com</a></p>
+      </div>
+      <div class="hero-card">
+        <p class="pill">Quick Turnaround</p>
+        <h3 style="margin:10px 0 6px">Single-Color Special</h3>
+        <p class="muted" style="margin:0 0 12px">One-side screen print • Shirt included</p>
+        <p class="price">$5.99</p>
+        <p class="muted" style="margin-top:-6px">per shirt • min order applies</p>
+      </div>
+    </section>
+
+    <section id="services" class="stripe">
+      <div class="wrap">
+        <h2 style="font-family:Staatliches;margin:0 0 16px;font-size:42px">Menu of Services</h2>
+        <p class="muted" style="margin:0 0 22px">Pick your base, add toppings, feast your eyes.</p>
+        <div class="grid cols-3">
+          <article class="card"><h3>Screen Printing</h3><p class="muted">Single-color specials and full-color jobs on tees, hoodies, and more.</p></article>
+          <article class="card"><h3>DTF / Heat Transfer</h3><p class="muted">Small runs, gradients, and fast reprints with durable transfers.</p></article>
+          <article class="card"><h3>Embroidery</h3><p class="muted">Hats, polos, jackets—clean stitching with crisp detail.</p></article>
+          <article class="card"><h3>Mugs & Drinkware</h3><p class="muted">Coffee mugs, tumblers, and glassware—perfect for swag.</p></article>
+          <article class="card"><h3>Stickers & Decals</h3><p class="muted">Die-cut vinyl decals and sticker sheets in matte or gloss.</p></article>
+          <article class="card"><h3>Design Services</h3><p class="muted">No artwork? Our designers will spin up something delicious.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" aria-labelledby="how">
+      <h2 id="how" style="font-family:Staatliches;margin:0 0 16px;font-size:42px">How It Works</h2>
+      <div class="grid cols-3">
+        <div class="card"><h3>1) Send Your Idea</h3><p class="muted">Upload art or describe the vibe. We’ll confirm details & timeline.</p></div>
+        <div class="card"><h3>2) Approve the Proof</h3><p class="muted">You get a clean mockup. Request tweaks until it’s perfect.</p></div>
+        <div class="card"><h3>3) We Print & Deliver</h3><p class="muted">Fresh prints ready for pickup or shipping. Done and delicious.</p></div>
+      </div>
+    </section>
+
+    <section id="gallery" class="stripe">
+      <div class="wrap">
+        <h2 style="font-family:Staatliches;margin:0 0 16px;font-size:42px">Recent Slices</h2>
+        <p class="muted" style="margin:0 0 18px">Drop in final photos later—these are placeholders.</p>
+        <div class="gallery">
+          <!-- Replace these with real job photos -->
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+          <div class="shot"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="order" class="wrap">
+      <h2 style="font-family:Staatliches;margin:0 0 16px;font-size:42px">Start Your Order</h2>
+      <p class="muted" style="margin:0 0 16px">Tell us the basics. We’ll reply with a quote and proof.
+      </p>
+      <form>
+        <div class="form-row">
+          <div>
+            <label for="name">Your Name</label>
+            <input id="name" type="text" placeholder="Jane Doe" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="qty">Approx. Quantity</label>
+            <input id="qty" type="number" min="1" placeholder="24" />
+          </div>
+          <div>
+            <label for="method">Print Method</label>
+            <select id="method">
+              <option>Screen Printing</option>
+              <option>DTF / Heat Transfer</option>
+              <option>Embroidery</option>
+              <option>Not Sure – Advise Me</option>
+            </select>
+          </div>
+        </div>
+        <label for="notes">Design Notes</label>
+        <textarea id="notes" placeholder="Shirt color, placements, deadlines, links to artwork, etc."></textarea>
+        <div class="cta">
+          <button class="btn primary" type="submit">Request Quote</button>
+          <a class="btn ghost" href="mailto:orders@shirtsbytheslice.com?subject=Quote%20Request">Email Instead</a>
+        </div>
+      </form>
+    </section>
+
+    <section id="about" class="stripe">
+      <div class="wrap">
+        <h2 style="font-family:Staatliches;margin:0 0 16px;font-size:42px">About Us</h2>
+        <div class="grid" style="grid-template-columns:1.1fr .9fr;align-items:center">
+          <div>
+            <p>We’re a veteran-owned print shop serving up custom merch with a side of personality. Whether you’re a booster club, small business, unit, or weekend crew, we specialize in clean designs, fair pricing, and on-time delivery.</p>
+            <p>Our promise: <strong>no surprises</strong>—just tasty prints that hit the spot.</p>
+            <p class="mut
